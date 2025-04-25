@@ -22,15 +22,6 @@
 
 ## 🛠 Installation
 
-### Manual Installation (for Development Mode)
-
-1. Download or clone this repository.
-2. Open `chrome://extensions/` in your browser.
-3. Enable "Developer mode" (top right).
-4. Click "Load unpacked" and select the project folder.
-5. Press your shortcut (e.g., `Ctrl+K` / `Cmd+K`) and jump!
-
-### Coming Soon:
 - Chrome Web Store
 - Firefox Add-ons Store
 - Edge Add-ons Store
