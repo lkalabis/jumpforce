@@ -1,94 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jumpforce - Documentation</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jumpforce - Documentation</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <header>
+      <img src="images/icon.png" alt="Jumpforce Logo" class="logo" />
+      <h1>Jumpforce Documentation</h1>
+      <a href="index.html" class="back-home">← Back to Home</a>
+    </header>
 
-  <header>
-    <img src="images/icon.png" alt="Jumpforce Logo" class="logo">
-    <h1>Jumpforce Documentation</h1>
-    <a href="index.html" class="back-home">← Back to Home</a>
-  </header>
+    <section class="doc-section">
+      <h2>Usage</h2>
+      <p>
+        Press <kbd>Ctrl+K</kbd> (Windows) or <kbd>Cmd+K</kbd> (Mac) to open the
+        spotlight.
+      </p>
+      <ul>
+        <li>Start typing a command or paste a Salesforce ID</li>
+        <li>Use <kbd>Tab</kbd> to autocomplete, <kbd>Enter</kbd> to go</li>
+        <li>
+          If your clipboard contains a Salesforce ID, it will be auto-filled
+        </li>
+      </ul>
+    </section>
+    <section class="doc-section">
+      <h2>Usage</h2>
+      <video
+        controls
+        autoplay
+        playsinline
+        muted
+        loop
+        preload="auto"
+        style="max-width: 100%; border-radius: 8px; margin-top: 1em"
+      >
+        <source src="demo1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
 
-  <section class="doc-section">
-    <h2>Usage</h2>
-    <p>Press <kbd>Ctrl+K</kbd> (Windows) or <kbd>Cmd+K</kbd> (Mac) to open the spotlight.</p>
-    <ul>
-      <li>Start typing a command or paste a Salesforce ID</li>
-      <li>Use <kbd>Tab</kbd> to autocomplete, <kbd>Enter</kbd> to go</li>
-      <li>If your clipboard contains a Salesforce ID, it will be auto-filled</li>
-    </ul>
-  </section>
-<section class="doc-section">
-  <h2>Usage</h2>
-  <video controls autoplay playsinline muted loop preload="auto" style="max-width: 100%; border-radius: 8px; margin-top: 1em;">
-    <source src="demo1.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</section>
+    <section class="doc-section">
+      <h2>Supported Commands</h2>
+      <p>
+        Below are supported keywords. Partial matches (e.g., "plat") will
+        autocomplete to the correct command. All commands are case-insensitive.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Keywords</th>
+            <th>Target</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>home</td>
+            <td>Go to Salesforce Home</td>
+          </tr>
+          <tr>
+            <td>object, objects, custom objects</td>
+            <td>Open Object Manager</td>
+          </tr>
+          <tr>
+            <td>flow, flows</td>
+            <td>Open Flow Setup Page</td>
+          </tr>
+          <tr>
+            <td>user, users</td>
+            <td>Manage Users</td>
+          </tr>
+          <tr>
+            <td>role, roles</td>
+            <td>Manage Roles</td>
+          </tr>
+          <tr>
+            <td>profile, profiles</td>
+            <td>Manage Profiles</td>
+          </tr>
+          <tr>
+            <td>event, events, platform events</td>
+            <td>Platform Events Page</td>
+          </tr>
+          <tr>
+            <td>pb, process builder</td>
+            <td>Process Builder</td>
+          </tr>
+          <tr>
+            <td>cmt, custom metadata</td>
+            <td>Custom Metadata Types</td>
+          </tr>
+          <tr>
+            <td>label, custom labels, labels</td>
+            <td>Custom Labels</td>
+          </tr>
+          <tr>
+            <td>audit, setup audit trail, trail</td>
+            <td>Setup Audit Trail</td>
+          </tr>
+          <tr>
+            <td>?, /</td>
+            <td>Show Help</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-<section class="doc-section">
-    <h2>Supported Commands</h2>
-    <p>Below are supported keywords. Partial matches (e.g., "plat") will autocomplete to the correct command. All commands are case-insensitive.</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Keywords</th>
-          <th>Target</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>home</td><td>Go to Salesforce Home</td></tr>
-        <tr><td>object, objects, custom objects</td><td>Open Object Manager</td></tr>
-        <tr><td>flow, flows</td><td>Open Flow Setup Page</td></tr>
-        <tr><td>user, users</td><td>Manage Users</td></tr>
-        <tr><td>role, roles</td><td>Manage Roles</td></tr>
-        <tr><td>profile, profiles</td><td>Manage Profiles</td></tr>
-        <tr><td>event, events, platform events</td><td>Platform Events Page</td></tr>
-        <tr><td>pb, process builder</td><td>Process Builder</td></tr>
-        <tr><td>cmt, custom metadata</td><td>Custom Metadata Types</td></tr>
-        <tr><td>label, custom labels, labels</td><td>Custom Labels</td></tr>
-        <tr><td>audit, setup audit trail, trail</td><td>Setup Audit Trail</td></tr>
-        <tr><td>?, /</td><td>Show Help</td></tr>
-      </tbody>
-    </table>
-  </section>
+    <section class="doc-section">
+      <h2>FAQ</h2>
+      <p>
+        <b>Q:</b> Will this extension access my Salesforce data?<br />
+        <b>A:</b> No. It only interacts with the URL of the current Salesforce
+        tab and does not transmit any data externally.
+      </p>
 
-  <section class="doc-section">
-    <h2>FAQ</h2>
-    <p><b>Q:</b> Will this extension access my Salesforce data?<br>
-    <b>A:</b> No. It only interacts with the URL of the current Salesforce tab and does not transmit any data externally.</p>
+      <p>
+        <b>Q:</b> How do I change the keyboard shortcut to open the
+        spotlight?<br />
+      </p>
 
-    <p><b>Q:</b> How do I change the keyboard shortcut to open the spotlight?<br>
-    <b>A:</b> 
+      <b>A:</b>
       <ul>
         <li><b>Chrome:</b> Go to <code>chrome://extensions/shortcuts</code></li>
         <li><b>Edge:</b> Go to <code>edge://extensions/shortcuts</code></li>
-        <li><b>Firefox:</b> Go to <code>about:addons</code>, click the gear icon → Manage Extension Shortcuts</li>
+        <li>
+          <b>Firefox:</b> Go to <code>about:addons</code>, click the gear icon →
+          Manage Extension Shortcuts
+        </li>
       </ul>
-    </p>
 
-    <p><b>Q:</b> Does the extension collect or store any Salesforce data?<br>
-    <b>A:</b> No. The extension operates entirely in your browser. It does not collect, transmit, or store any Salesforce data or personal information.</p>
+      <p>
+        <b>Q:</b> Does the extension collect or store any Salesforce data?<br />
+        <b>A:</b> No. The extension operates entirely in your browser. It does
+        not collect, transmit, or store any Salesforce data or personal
+        information.
+      </p>
 
-    <p><b>Q:</b> Can I use Jumpforce in multiple Salesforce orgs?<br>
-    <b>A:</b> Yes. Jumpforce works on any Salesforce Lightning Experience domain and adapts to the currently active tab.</p>
+      <p>
+        <b>Q:</b> Can I use Jumpforce in multiple Salesforce orgs?<br />
+        <b>A:</b> Yes. Jumpforce works on any Salesforce Lightning Experience
+        domain and adapts to the currently active tab.
+      </p>
 
-    <p><b>Q:</b> What happens if I type an unsupported command?<br>
-    <b>A:</b> Nothing will happen unless a matching rule is found. If you want to have more commands, just let me know.</p>
-    
-    <p><b>Q:</b> How does the clipboard integration work?<br>
-    <b>A:</b> When you open the spotlight, the extension automatically checks your clipboard for a valid Salesforce record ID. If found, it pre-fills the input field to speed up navigation. Your clipboard content is never stored or transmitted. The browser may prompt you to grant clipboard read permission the first time this happens. You can safely approve this request. The clipboard value is cleared from the input after the spotlight is used.</p>
-  </section>
+      <p>
+        <b>Q:</b> What happens if I type an unsupported command?<br />
+        <b>A:</b> Nothing will happen unless a matching rule is found. If you
+        want to have more commands, just let me know.
+      </p>
 
-  <footer>
-    <p>© 2025 Jumpforce. Made with ❤️ by a Salesforce enthusiast.</p>
-  </footer>
+      <p>
+        <b>Q:</b> How does the clipboard integration work?<br />
+        <b>A:</b> When you open the spotlight, the extension automatically
+        checks your clipboard for a valid Salesforce record ID. If found, it
+        pre-fills the input field to speed up navigation. Your clipboard content
+        is never stored or transmitted. The browser may prompt you to grant
+        clipboard read permission the first time this happens. You can safely
+        approve this request. The clipboard value is cleared from the input
+        after the spotlight is used.
+      </p>
+    </section>
 
-</body>
+    <footer>
+      <p>© 2025 Jumpforce. Made with ❤️ by a Salesforce enthusiast.</p>
+    </footer>
+  </body>
 </html>
