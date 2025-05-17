@@ -50,4 +50,4 @@ Open an issue or fork this repo to help build the fastest Salesforce extension e
 
 ## 📄 License
 
-MIT License
+CC BY 4.0
