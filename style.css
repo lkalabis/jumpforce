@@ -162,3 +162,23 @@ td {
 td + td {
   padding-left: 2em;
 }
+.changelog-list {
+  list-style: none;
+  margin: 0;
+  font-size: 1rem;
+}
+.changelog-list ul {
+  unset: all;
+  padding: 4rem;
+}
+
+.changelog-list li {
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.changelog-list li b {
+  display: inline-block;
+  width: 80px;
+  color: #005fb2;
+}
