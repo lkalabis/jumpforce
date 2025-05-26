@@ -11,7 +11,7 @@
     <header>
       <img src="images/icon.png" alt="Jumpforce Logo" class="logo" />
       <h1>Jumpforce Documentation</h1>
-      <a href="index.html" class="back-home">← Back to Home</a>
+      <a href="index.html" class="back-home">Back to Home</a>
     </header>
 
     <section class="doc-section">
@@ -28,6 +28,7 @@
       <ul>
         <li>Start typing a command or paste a Salesforce ID</li>
         <li>Use <kbd>Tab</kbd> to autocomplete, <kbd>Enter</kbd> to go</li>
+        <li>Use <kbd>Tab</kbd> multiple times to switch between matches</li>
         <li>
           If your clipboard contains a Salesforce ID, it will be auto-filled
         </li>
@@ -46,51 +47,7 @@
             <th>Target</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>home</td>
-            <td>Go to Salesforce Home</td>
-          </tr>
-          <tr>
-            <td>object, objects, custom objects</td>
-            <td>Open Object Manager</td>
-          </tr>
-          <tr>
-            <td>flow, flows</td>
-            <td>Open Flow Setup Page</td>
-          </tr>
-          <tr>
-            <td>user, users</td>
-            <td>Manage Users</td>
-          </tr>
-          <tr>
-            <td>role, roles</td>
-            <td>Manage Roles</td>
-          </tr>
-          <tr>
-            <td>profile, profiles</td>
-            <td>Manage Profiles</td>
-          </tr>
-          <tr>
-            <td>event, events, platform events</td>
-            <td>Platform Events Page</td>
-          </tr>
-          <tr>
-            <td>pb, process builder</td>
-            <td>Process Builder</td>
-          </tr>
-          <tr>
-            <td>cmt, custom metadata</td>
-            <td>Custom Metadata Types</td>
-          </tr>
-          <tr>
-            <td>label, custom labels, labels</td>
-            <td>Custom Labels</td>
-          </tr>
-          <tr>
-            <td>?, /</td>
-            <td>Show Help</td>
-          </tr>
+        <tbody id="commandsTable">
         </tbody>
       </table>
     </section>
@@ -151,6 +108,13 @@
     <section id="changelog" class="doc-section">
       <h2>Changelog</h2>
       <article class="release">
+        <h3>v0.14 – 26.05.2025</h3>
+        <ul>
+          <li>🚀 Add more commands</li>
+        </ul>
+      </article>
+
+      <article class="release">
         <h3>v0.13 – 20.05.2025</h3>
         <ul>
           <li>🚀 First official release</li>
@@ -161,5 +125,289 @@
     <footer>
       <p>© 2025 Jumpforce. Made with ❤️ by a Salesforce enthusiast.</p>
     </footer>
+    <script>
+
+    const suggestions = [
+    { name: "help", description: "This Help" },
+
+    {
+      name: "Home",
+      description: "Go to Home",
+      category: "Navigation",
+    },
+    {
+      name: "Flows",
+      description: "Flow Setup Page",
+      category: "Automation",
+    },
+    {
+      name: "Setup",
+      description: "Go to Setup Home Page",
+      category: "Navigation",
+    },
+    {
+      name: "Users",
+      description: "User Management Page",
+      category: "User Management",
+    },
+    {
+      name: "Roles",
+      description: "Role Management Page",
+      category: "User Management",
+    },
+    {
+      name: "Profiles",
+      description: "Profile Management Page",
+      category: "User Management",
+    },
+    {
+      name: "Account",
+      description: "Navigate to Account page",
+      category: "Standard Object",
+    },
+    {
+      name: "Contact",
+      description: "Navigate to Contact page",
+      category: "Standard Object",
+    },
+    {
+      name: "Opportunity",
+      description: "Navigate to Opportunity page",
+      category: "Standard Object",
+    },
+    {
+      name: "Lead",
+      description: "Navigate to Lead page",
+      category: "Standard Object",
+    },
+    {
+      name: "Order",
+      description: "Navigate to Order page",
+      category: "Standard Object",
+    },
+    {
+      name: "Case",
+      description: "Navigate to Case page",
+      category: "Standard Object",
+    },
+    {
+      name: "Campaign",
+      description: "Navigate to Campaign page",
+      category: "Standard Object",
+    },
+    {
+      name: "Task",
+      description: "Navigate to Task page",
+      category: "Standard Object",
+    },
+    {
+      name: "Event",
+      description: "Navigate to Event page",
+      category: "Standard Object",
+    },
+    {
+      name: "Product",
+      description: "Navigate to Product page",
+      category: "Standard Object",
+    },
+    {
+      name: "Pricebook",
+      description: "Navigate to Price Book page",
+      category: "Standard Object",
+    },
+    {
+      name: "Asset",
+      description: "Navigate to Asset page",
+      category: "Standard Object",
+    },
+    {
+      name: "Contract",
+      description: "Navigate to Contract page",
+      category: "Standard Object",
+    },
+    {
+      name: "Quote",
+      description: "Navigate to Quote page",
+      category: "Standard Object",
+    },
+    {
+      name: "Order Product",
+      description: "Navigate to Order Product (OrderItem) page",
+      category: "Standard Object",
+    },
+    {
+      name: "Custom Settings",
+      description: "Navigate to Custom Settings",
+      category: "Setup",
+    },
+    {
+      name: "Permission Set",
+      description: "Navigate to Permission Set page",
+      category: "User Management",
+    },
+    {
+      name: "Platform Events",
+      description: "Platform Events Page",
+      category: "Setup",
+    },
+    {
+      name: "Process Builder",
+      description: "Process Builder Page",
+      category: "Automation",
+    },
+    {
+      name: "Custom Objects",
+      description: "Navigate to Object List",
+      category: "Setup",
+    },
+    {
+      name: "Custom Metadata Types",
+      description: "Custom Metadata Types",
+      category: "Setup",
+    },
+    {
+      name: "Custom Labels",
+      description: "Custom Labels",
+      category: "Setup",
+    },
+    {
+      name: "Setup Audit Trail",
+      description: "Custom Labels",
+      category: "Setup",
+    },
+    {
+      name: "Permission Set Groups",
+      description: "Navigate to Permission Set Groups",
+      category: "User Management",
+    },
+    {
+      name: "Public Groups",
+      description: "Navigate to Public Groups",
+      category: "User Management",
+    },
+    {
+      name: "Queues",
+      description: "Navigate to Queues",
+      category: "User Management",
+    },
+    {
+      name: "Users",
+      description: "Navigate to User Management",
+      category: "User Management",
+    },
+    {
+      name: "Approval Processes",
+      description: "Navigate to Approval Processes",
+      category: "Automation",
+    },
+    {
+      name: "Apex Classes",
+      description: "Navigate to Apex Classes",
+      category: "Automation",
+    },
+    {
+      name: "Apex Triggers",
+      description: "Navigate to Apex Triggers",
+      category: "Automation",
+    },
+    {
+      name: "Custom Permissions",
+      description: "Navigate to Custom Permissions",
+      category: "User Management",
+    },
+    {
+      name: "Static Resources",
+      description: "Navigate to Static Resources",
+      category: "Setup",
+    },
+    {
+      name: "Company Profile",
+      description: "Navigate to Company Profile",
+      category: "Setup",
+    },
+    {
+      name: "Named Credentials",
+      description: "Navigate to Named Credentials",
+      category: "Setup",
+    },
+  ];
+    function generateHelpHTML(suggestions) {
+    const header = `<tr>
+<td>&lt;SF ID&gt;</td>
+<td>Jump to Record</td>
+</tr><tr>
+<td>Home</td>
+<td>Go to Home</td>
+</tr><tr>
+<td>Setup</td>
+<td>Go to Setup Home Page</td>
+</tr>
+`;
+
+    const standardObjects = suggestions.filter(
+      (s) => s.category === "Standard Object",
+    );
+    const userManagement = suggestions.filter(
+      (s) => s.category === "User Management",
+    );
+    const automation = suggestions.filter((s) => s.category === "Automation");
+
+    const setup = suggestions.filter((s) => s.category === "Setup");
+    const standardCommands = standardObjects.flatMap((s) => s.name).join(" | ");
+    const userManagementCommands = userManagement
+      .flatMap((s) => s.name)
+      .join(" | ");
+    const automationCommands = automation.flatMap((s) => s.name).join(" | ");
+    const setupCommands = setup.flatMap((s) => s.name).join(" | ");
+    const standardDescriptions = standardObjects
+      .map((s) => s.description)
+      .join(" | ");
+
+
+      const standardRow = `<tr>
+ <td>${standardCommands}</td>
+ <td>Go to Records Page View</td>
+</tr>
+ `;
+
+      const userManagementRows = `<tr>
+<td>${userManagementCommands}</td>
+ <td>Go to User Management Settings</td>
+</tr>
+ `;
+
+      const automationRows = `<tr>
+<td>${automationCommands}</td>
+ <td>Go to Automation Settings</td>
+</tr>
+ `;
+
+      const setupRows = `<tr>
+<td>${setupCommands}</td>
+ <td>Go to Setup Settings</td>
+</tr>
+ `;
+
+      const footer = `<tr>
+       <td>? | /</td>
+       <td>This Help</td>
+       </div>
+</tr>
+    `;
+
+    return (
+      header +
+      standardRow +
+      userManagementRows +
+      automationRows +
+      setupRows +
+      footer
+    );
+  }
+
+
+const commandsTableElement = document.getElementById('commandsTable');
+commandsTableElement.innerHTML = generateHelpHTML(suggestions);
+    </script>
   </body>
 </html>

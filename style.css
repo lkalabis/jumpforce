@@ -158,9 +158,8 @@ th {
 }
 td {
   border-bottom: 1px solid #eee;
-}
-td + td {
-  padding-left: 2em;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 .changelog-list {
   list-style: none;
