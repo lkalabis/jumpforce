@@ -22,16 +22,19 @@
       </p>
       <p>
         You can also customize this shortcut in the extension settings to suit
-        your preferences. See the FAQ section for more details
-        https://community.meister.co/discussion/636/how-to-grant-clipboard-access-to-paste-styling-firefox
+        your preferences. See the FAQ section for more details.
       </p>
       <ul>
         <li>Start typing a command or paste a Salesforce ID</li>
         <li>Use <kbd>Tab</kbd> to autocomplete, <kbd>Enter</kbd> to go</li>
+        <li>Use <kbd>ArrowUp</kbd>/<kbd>ArrowDown</kbd> in the command palette</li>
         <li>Use <kbd>Tab</kbd> multiple times to switch between matches</li>
+        <li>Use <kbd>?</kbd> or <kbd>/</kbd> to open help</li>
         <li>
           If your clipboard contains a Salesforce ID, it will be auto-filled
         </li>
+        <li>Object jump: <code>obj Account</code></li>
+        <li>Object section: <code>obj Account fields</code> (also supports prefixes)</li>
       </ul>
       <span style="color: red; font-weight: bold;">If the extension doesn't start after installation and pressing the shortcut, make sure your browser has the shortcut set correctly.<span>
   </section>
@@ -83,6 +86,42 @@
         <tbody id="commandsTable">
         </tbody>
       </table>
+    </section>
+
+    <section class="doc-section">
+      <h2>Object Commands</h2>
+      <p>
+        Use <code>obj &lt;ApiName&gt;</code> to open an object home, or add a section:
+      </p>
+      <ul>
+        <li><code>obj Account fields</code></li>
+        <li><code>obj Account layouts</code></li>
+        <li><code>obj Account recordtypes</code></li>
+      </ul>
+      <p>Supported sections:</p>
+      <ul>
+        <li>fields</li>
+        <li>layouts</li>
+        <li>lightningpages</li>
+        <li>buttons</li>
+        <li>compact</li>
+        <li>fieldsets</li>
+        <li>limits</li>
+        <li>recordtypes</li>
+        <li>lookupfilters</li>
+        <li>searchlayouts</li>
+        <li>alohasearchlayouts</li>
+        <li>hierarchycolumns</li>
+        <li>objectaccess</li>
+        <li>apextriggers</li>
+        <li>flowtriggers</li>
+        <li>validationrules</li>
+        <li>urlslugs</li>
+        <li>conditionalfieldformatting</li>
+      </ul>
+      <p>
+        Shorthand prefixes are supported (e.g. <code>obj Account f</code> or <code>obj Account val</code>).
+      </p>
     </section>
 
     <section class="doc-section">
@@ -176,288 +215,55 @@
       <p>© 2025 Jumpforce. Made with ❤️ by a Salesforce enthusiast.</p>
     </footer>
     <script>
+      const commands = [
+        { keywords: "home", target: "Home page" },
+        { keywords: "setup", target: "Setup home" },
+        { keywords: "flows", target: "Flow setup" },
+        { keywords: "roles", target: "Role management" },
+        { keywords: "profiles", target: "Profile management" },
+        { keywords: "users", target: "User management" },
 
-    const suggestions = [
-    { name: "help", description: "This Help" },
+        { keywords: "account", target: "Account home" },
+        { keywords: "contact", target: "Contact home" },
+        { keywords: "opportunity", target: "Opportunity home" },
+        { keywords: "lead", target: "Lead home" },
+        { keywords: "case", target: "Case home" },
+        { keywords: "task", target: "Task home" },
+        { keywords: "event", target: "Event home" },
 
-    {
-      name: "Home",
-      description: "Go to Home",
-      category: "Navigation",
-    },
-    {
-      name: "Flows",
-      description: "Flow Setup Page",
-      category: "Automation",
-    },
-    {
-      name: "Setup",
-      description: "Go to Setup Home Page",
-      category: "Navigation",
-    },
-    {
-      name: "Users",
-      description: "User Management Page",
-      category: "User Management",
-    },
-    {
-      name: "Roles",
-      description: "Role Management Page",
-      category: "User Management",
-    },
-    {
-      name: "Profiles",
-      description: "Profile Management Page",
-      category: "User Management",
-    },
-    {
-      name: "Account",
-      description: "Navigate to Account page",
-      category: "Standard Object",
-    },
-    {
-      name: "Contact",
-      description: "Navigate to Contact page",
-      category: "Standard Object",
-    },
-    {
-      name: "Opportunity",
-      description: "Navigate to Opportunity page",
-      category: "Standard Object",
-    },
-    {
-      name: "Lead",
-      description: "Navigate to Lead page",
-      category: "Standard Object",
-    },
-    {
-      name: "Order",
-      description: "Navigate to Order page",
-      category: "Standard Object",
-    },
-    {
-      name: "Case",
-      description: "Navigate to Case page",
-      category: "Standard Object",
-    },
-    {
-      name: "Campaign",
-      description: "Navigate to Campaign page",
-      category: "Standard Object",
-    },
-    {
-      name: "Task",
-      description: "Navigate to Task page",
-      category: "Standard Object",
-    },
-    {
-      name: "Event",
-      description: "Navigate to Event page",
-      category: "Standard Object",
-    },
-    {
-      name: "Product",
-      description: "Navigate to Product page",
-      category: "Standard Object",
-    },
-    {
-      name: "Pricebook",
-      description: "Navigate to Price Book page",
-      category: "Standard Object",
-    },
-    {
-      name: "Asset",
-      description: "Navigate to Asset page",
-      category: "Standard Object",
-    },
-    {
-      name: "Contract",
-      description: "Navigate to Contract page",
-      category: "Standard Object",
-    },
-    {
-      name: "Quote",
-      description: "Navigate to Quote page",
-      category: "Standard Object",
-    },
-    {
-      name: "Order Product",
-      description: "Navigate to Order Product (OrderItem) page",
-      category: "Standard Object",
-    },
-    {
-      name: "Custom Settings",
-      description: "Navigate to Custom Settings",
-      category: "Setup",
-    },
-    {
-      name: "Permission Set",
-      description: "Navigate to Permission Set page",
-      category: "User Management",
-    },
-    {
-      name: "Platform Events",
-      description: "Platform Events Page",
-      category: "Setup",
-    },
-    {
-      name: "Process Builder",
-      description: "Process Builder Page",
-      category: "Automation",
-    },
-    {
-      name: "Custom Objects",
-      description: "Navigate to Object List",
-      category: "Setup",
-    },
-    {
-      name: "Custom Metadata Types",
-      description: "Custom Metadata Types",
-      category: "Setup",
-    },
-    {
-      name: "Custom Labels",
-      description: "Custom Labels",
-      category: "Setup",
-    },
-    {
-      name: "Setup Audit Trail",
-      description: "Custom Labels",
-      category: "Setup",
-    },
-    {
-      name: "Permission Set Groups",
-      description: "Navigate to Permission Set Groups",
-      category: "User Management",
-    },
-    {
-      name: "Public Groups",
-      description: "Navigate to Public Groups",
-      category: "User Management",
-    },
-    {
-      name: "Queues",
-      description: "Navigate to Queues",
-      category: "User Management",
-    },
-    {
-      name: "Users",
-      description: "Navigate to User Management",
-      category: "User Management",
-    },
-    {
-      name: "Approval Processes",
-      description: "Navigate to Approval Processes",
-      category: "Automation",
-    },
-    {
-      name: "Apex Classes",
-      description: "Navigate to Apex Classes",
-      category: "Automation",
-    },
-    {
-      name: "Apex Triggers",
-      description: "Navigate to Apex Triggers",
-      category: "Automation",
-    },
-    {
-      name: "Custom Permissions",
-      description: "Navigate to Custom Permissions",
-      category: "User Management",
-    },
-    {
-      name: "Static Resources",
-      description: "Navigate to Static Resources",
-      category: "Setup",
-    },
-    {
-      name: "Company Profile",
-      description: "Navigate to Company Profile",
-      category: "Setup",
-    },
-    {
-      name: "Named Credentials",
-      description: "Navigate to Named Credentials",
-      category: "Setup",
-    },
-  ];
-    function generateHelpHTML(suggestions) {
-    const header = `<tr>
-<td>&lt;SF ID&gt;</td>
-<td>Jump to Record</td>
-</tr><tr>
-<td>Home</td>
-<td>Go to Home</td>
-</tr><tr>
-<td>Setup</td>
-<td>Go to Setup Home Page</td>
-</tr>
-`;
+        { keywords: "my accounts", target: "My Accounts list" },
+        { keywords: "my opportunities", target: "My Opportunities list" },
+        { keywords: "my leads", target: "My Leads list" },
+        { keywords: "my tasks", target: "My Tasks list" },
 
-    const standardObjects = suggestions.filter(
-      (s) => s.category === "Standard Object",
-    );
-    const userManagement = suggestions.filter(
-      (s) => s.category === "User Management",
-    );
-    const automation = suggestions.filter((s) => s.category === "Automation");
+        { keywords: "reports", target: "Reports home" },
+        { keywords: "dashboards", target: "Dashboards home" },
 
-    const setup = suggestions.filter((s) => s.category === "Setup");
-    const standardCommands = standardObjects.flatMap((s) => s.name).join(" | ");
-    const userManagementCommands = userManagement
-      .flatMap((s) => s.name)
-      .join(" | ");
-    const automationCommands = automation.flatMap((s) => s.name).join(" | ");
-    const setupCommands = setup.flatMap((s) => s.name).join(" | ");
-    const standardDescriptions = standardObjects
-      .map((s) => s.description)
-      .join(" | ");
+        { keywords: "custom settings", target: "Custom Settings" },
+        { keywords: "custom metadata types", target: "Custom Metadata Types" },
+        { keywords: "custom labels", target: "Custom Labels" },
+        { keywords: "setup audit trail", target: "Setup Audit Trail" },
+        { keywords: "named credentials", target: "Named Credentials" },
+        { keywords: "platform events", target: "Platform Events" },
 
+        { keywords: "obj <ApiName>", target: "Open object home" },
+        {
+          keywords: "obj <ApiName> <section>",
+          target: "Open object section (fields, layouts, recordtypes, ...)",
+        },
+      ];
 
-      const standardRow = `<tr>
- <td>${standardCommands}</td>
- <td>Go to Records Page View</td>
-</tr>
- `;
-
-      const userManagementRows = `<tr>
-<td>${userManagementCommands}</td>
- <td>Go to User Management Settings</td>
-</tr>
- `;
-
-      const automationRows = `<tr>
-<td>${automationCommands}</td>
- <td>Go to Automation Settings</td>
-</tr>
- `;
-
-      const setupRows = `<tr>
-<td>${setupCommands}</td>
- <td>Go to Setup Settings</td>
-</tr>
- `;
-
-      const footer = `<tr>
-       <td>? | /</td>
-       <td>This Help</td>
-       </div>
-</tr>
-    `;
-
-    return (
-      header +
-      standardRow +
-      userManagementRows +
-      automationRows +
-      setupRows +
-      footer
-    );
-  }
-
-
-const commandsTableElement = document.getElementById('commandsTable');
-commandsTableElement.innerHTML = generateHelpHTML(suggestions);
+      const table = document.getElementById("commandsTable");
+      commands.forEach((cmd) => {
+        const row = document.createElement("tr");
+        const keywords = document.createElement("td");
+        const target = document.createElement("td");
+        keywords.textContent = cmd.keywords;
+        target.textContent = cmd.target;
+        row.appendChild(keywords);
+        row.appendChild(target);
+        table.appendChild(row);
+      });
     </script>
   </body>
 </html>
