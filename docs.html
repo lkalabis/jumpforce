@@ -223,53 +223,155 @@
     </footer>
     <script>
       const commands = [
-        { keywords: "home", target: "Home page" },
-        { keywords: "setup", target: "Setup home" },
-        { keywords: "flows", target: "Flow setup" },
-        { keywords: "roles", target: "Role management" },
-        { keywords: "profiles", target: "Profile management" },
-        { keywords: "users", target: "User management" },
+        { category: "Navigation", keywords: "home", target: "Home page" },
+        { category: "Navigation", keywords: "setup", target: "Setup home" },
+        { category: "Automation", keywords: "flows", target: "Flow setup" },
+        { category: "User Management", keywords: "roles", target: "Role management" },
+        { category: "User Management", keywords: "profiles", target: "Profile management" },
+        { category: "User Management", keywords: "users", target: "User management" },
 
-        { keywords: "account", target: "Account home" },
-        { keywords: "contact", target: "Contact home" },
-        { keywords: "opportunity", target: "Opportunity home" },
-        { keywords: "lead", target: "Lead home" },
-        { keywords: "case", target: "Case home" },
-        { keywords: "task", target: "Task home" },
-        { keywords: "event", target: "Event home" },
+        { category: "Standard Object", keywords: "account", target: "Account home" },
+        { category: "Standard Object", keywords: "contact", target: "Contact home" },
+        { category: "Standard Object", keywords: "opportunity", target: "Opportunity home" },
+        { category: "Standard Object", keywords: "lead", target: "Lead home" },
+        { category: "Standard Object", keywords: "case", target: "Case home" },
+        { category: "Standard Object", keywords: "task", target: "Task home" },
+        { category: "Standard Object", keywords: "event", target: "Event home" },
 
-        { keywords: "my accounts", target: "My Accounts list" },
-        { keywords: "my opportunities", target: "My Opportunities list" },
-        { keywords: "my leads", target: "My Leads list" },
-        { keywords: "my tasks", target: "My Tasks list" },
+        { category: "Standard Object", keywords: "my accounts", target: "My Accounts list" },
+        { category: "Standard Object", keywords: "my opportunities", target: "My Opportunities list" },
+        { category: "Standard Object", keywords: "my leads", target: "My Leads list" },
+        { category: "Standard Object", keywords: "my tasks", target: "My Tasks list" },
 
-        { keywords: "reports", target: "Reports home" },
-        { keywords: "dashboards", target: "Dashboards home" },
+        { category: "Standard Object", keywords: "reports", target: "Reports home" },
+        { category: "Standard Object", keywords: "dashboards", target: "Dashboards home" },
 
-        { keywords: "custom settings", target: "Custom Settings" },
-        { keywords: "custom metadata types", target: "Custom Metadata Types" },
-        { keywords: "custom labels", target: "Custom Labels" },
-        { keywords: "setup audit trail", target: "Setup Audit Trail" },
-        { keywords: "named credentials", target: "Named Credentials" },
-        { keywords: "platform events", target: "Platform Events" },
+        { category: "Setup", keywords: "custom settings", target: "Custom Settings" },
+        { category: "Setup", keywords: "custom metadata types", target: "Custom Metadata Types" },
+        { category: "Setup", keywords: "custom labels", target: "Custom Labels" },
+        { category: "Setup", keywords: "setup audit trail", target: "Setup Audit Trail" },
+        { category: "Setup", keywords: "named credentials", target: "Named Credentials" },
+        { category: "Setup", keywords: "platform events", target: "Platform Events" },
+        { category: "Setup", keywords: "apex hammer results", target: "Apex Hammer Result Status" },
+        { category: "Setup", keywords: "apex test queue", target: "Apex Test Queue" },
+        { category: "Setup", keywords: "apex test history", target: "Apex Test History" },
+        { category: "Setup", keywords: "lightning components", target: "Lightning Component Bundles" },
+        { category: "Setup", keywords: "apex components", target: "Apex Components" },
+        { category: "Setup", keywords: "visualforce pages", target: "Apex Pages" },
+        { category: "Setup", keywords: "lightning types", target: "Lightning Types" },
+        { category: "Setup", keywords: "platform cache", target: "Platform Cache" },
+        { category: "Setup", keywords: "apex debug logs", target: "Apex Debug Logs" },
+        { category: "Setup", keywords: "email log files", target: "Email Log Files" },
+        { category: "Setup", keywords: "release updates", target: "Release Updates" },
+        { category: "Setup", keywords: "mobile app quick start", target: "Salesforce Mobile App Quick Start" },
+        { category: "Setup", keywords: "hyperforce assistant", target: "Hyperforce Assistant" },
+        { category: "Setup", keywords: "integration configuration", target: "Integration Configuration" },
+        { category: "Setup", keywords: "translation export", target: "Workbench Export" },
+        { category: "Setup", keywords: "translation import", target: "Workbench Import" },
+        { category: "Setup", keywords: "translation translate", target: "Workbench Translate" },
+        { category: "Setup", keywords: "translation settings", target: "Workbench Setup" },
+        { category: "Setup", keywords: "developer console", target: "Open Developer Console" },
 
-        { keywords: "obj <ApiName>", target: "Open object home" },
+        { category: "Personal Settings", keywords: "advanced user details", target: "Advanced User Details" },
+        { category: "Personal Settings", keywords: "login history (personal)", target: "Login History" },
+        { category: "Personal Settings", keywords: "language & time zone", target: "Language and Time Zone" },
+        { category: "Personal Settings", keywords: "grant login access", target: "Grant Login Access" },
+        { category: "Personal Settings", keywords: "personal information", target: "Personal Information" },
+        { category: "Personal Settings", keywords: "personal connections", target: "Connections" },
+        { category: "Personal Settings", keywords: "change password", target: "Change Password" },
+        { category: "Personal Settings", keywords: "external object user settings", target: "External Object User Settings" },
+        { category: "Personal Settings", keywords: "approver settings", target: "Approver Settings" },
+        { category: "Personal Settings", keywords: "email settings", target: "Email Settings" },
+        { category: "Personal Settings", keywords: "email to salesforce", target: "Email to Salesforce" },
+        { category: "Personal Settings", keywords: "unresolved items", target: "Unresolved Items" },
+        { category: "Personal Settings", keywords: "collaboration email settings", target: "Collaboration Email Settings" },
+        { category: "Personal Settings", keywords: "my feeds settings", target: "My Feeds Settings" },
+        { category: "Personal Settings", keywords: "reminders", target: "Reminders" },
+
+        { category: "Setup Settings", keywords: "lead settings", target: "Lead Settings" },
+        { category: "Setup Settings", keywords: "account settings", target: "Account Settings" },
+        { category: "Setup Settings", keywords: "home activities settings", target: "Home Activities Settings" },
+        { category: "Setup Settings", keywords: "contract settings", target: "Contract Settings" },
+        { category: "Setup Settings", keywords: "forecasting settings", target: "Forecasting Settings" },
+        { category: "Setup Settings", keywords: "individual settings", target: "Individual Settings" },
+        { category: "Setup Settings", keywords: "notes settings", target: "Notes Settings" },
+        { category: "Setup Settings", keywords: "opportunity team settings", target: "Opportunity Team Member Settings" },
+        { category: "Setup Settings", keywords: "opportunity settings", target: "Opportunity Settings" },
+        { category: "Setup Settings", keywords: "order settings", target: "Order Settings" },
+        { category: "Setup Settings", keywords: "asset settings", target: "Asset Settings" },
+        { category: "Setup Settings", keywords: "product settings", target: "Product Settings" },
+        { category: "Setup Settings", keywords: "quote settings", target: "Quote Settings" },
+        { category: "Setup Settings", keywords: "sales engagement", target: "Sales Engagement Settings" },
+        { category: "Setup Settings", keywords: "territory settings", target: "Territory Settings" },
+        { category: "Setup Settings", keywords: "files settings", target: "Files General Settings" },
+        { category: "Setup Settings", keywords: "entitlement settings", target: "Entitlement Settings" },
+        { category: "Setup Settings", keywords: "field service settings", target: "Field Service Settings" },
+        { category: "Setup Settings", keywords: "macro settings", target: "Macro Settings" },
+        { category: "Setup Settings", keywords: "omni-channel settings", target: "Omni-Channel Settings" },
+        { category: "Setup Settings", keywords: "survey settings", target: "Survey Settings" },
+        { category: "Setup Settings", keywords: "path settings", target: "Path Assistant Settings" },
+        { category: "Setup Settings", keywords: "quick text settings", target: "Lightning Quick Text Settings" },
+        { category: "Setup Settings", keywords: "record home settings", target: "Simple Record Home Settings" },
+        { category: "Setup Settings", keywords: "apex settings", target: "Apex Settings" },
+        { category: "Setup Settings", keywords: "sandbox settings", target: "Sandbox Settings" },
+        { category: "Setup Settings", keywords: "deployment settings", target: "Deployment Settings" },
+        { category: "Setup Settings", keywords: "language settings", target: "Language Settings" },
+        { category: "Setup Settings", keywords: "maps and location settings", target: "Maps and Location Services Settings" },
+        { category: "Setup Settings", keywords: "oauth and oidc settings", target: "OAuth and OIDC Settings" },
+        { category: "Setup Settings", keywords: "single sign-on settings", target: "Single Sign-On Settings" },
+        { category: "Setup Settings", keywords: "remote site settings", target: "Security Remote Proxy Settings" },
+        { category: "Setup Settings", keywords: "session settings", target: "Session Settings" },
+        { category: "Setup Settings", keywords: "sharing settings", target: "Sharing Settings" },
+
+        { category: "Navigation", keywords: "obj <ApiName>", target: "Open (custom) object home (for Custom Objects exact API name required; no org connection)" },
         {
+          category: "Navigation",
           keywords: "obj <ApiName> <section>",
-          target: "Open object section (fields, layouts, recordtypes, ...)",
-        },
+          target: "Open (custom) object section (fields, layouts, recordtypes, ...) (for Custom Objects exact API name required; no org connection)",
+        }
+      ];
+
+      const categoryOrder = [
+        "Navigation",
+        "User Management",
+        "Automation",
+        "Standard Object",
+        "Personal Settings",
+        "Setup Settings",
+        "Setup",
+        "Other",
       ];
 
       const table = document.getElementById("commandsTable");
+      const grouped = new Map();
       commands.forEach((cmd) => {
-        const row = document.createElement("tr");
-        const keywords = document.createElement("td");
-        const target = document.createElement("td");
-        keywords.textContent = cmd.keywords;
-        target.textContent = cmd.target;
-        row.appendChild(keywords);
-        row.appendChild(target);
-        table.appendChild(row);
+        if (!grouped.has(cmd.category)) grouped.set(cmd.category, []);
+        grouped.get(cmd.category).push(cmd);
+      });
+
+      categoryOrder.forEach((category) => {
+        const items = grouped.get(category);
+        if (!items || items.length === 0) return;
+
+        const sectionRow = document.createElement("tr");
+        const sectionCell = document.createElement("td");
+        sectionCell.colSpan = 2;
+        sectionCell.textContent = category;
+        sectionCell.style.fontWeight = "bold";
+        sectionCell.style.background = "rgba(0,0,0,0.04)";
+        sectionRow.appendChild(sectionCell);
+        table.appendChild(sectionRow);
+
+        items.forEach((cmd) => {
+          const row = document.createElement("tr");
+          const keywords = document.createElement("td");
+          const target = document.createElement("td");
+          keywords.textContent = cmd.keywords;
+          target.textContent = cmd.target;
+          row.appendChild(keywords);
+          row.appendChild(target);
+          table.appendChild(row);
+        });
       });
     </script>
   </body>
