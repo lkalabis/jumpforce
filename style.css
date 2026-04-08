@@ -146,9 +146,10 @@ footer {
 .back-home {
   display: block;
   margin: 1rem;
-  color: #005fb2;
+  color: #ffffff;
   text-decoration: none;
   font-weight: bold;
+  text-decoration: underline;
 }
 
 .button-docs {
